@@ -1,0 +1,70 @@
+# El proyecto de Xcode se genera con `xcodegen` a partir de este archivo,
+# para que el historial guarde algo legible y no un .pbxproj de miles de líneas.
+name: Mando
+options:
+  bundleIdPrefix: mx.alfonsoleal
+  developmentLanguage: es-MX
+  deploymentTarget:
+    iOS: "26.0"
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
+    SWIFT_APPROACHABLE_CONCURRENCY: YES
+    DEVELOPMENT_TEAM: 7G93RP4Z5A
+targets:
+  Mando:
+    type: application
+    platform: iOS
+    sources: [Mando]
+    info:
+      path: Mando/Info.plist
+      properties:
+        CFBundleDisplayName: Mando
+        CFBundleShortVersionString: "0.1"
+        CFBundleVersion: "1"
+        UILaunchScreen: {}
+        # La marca es oscura de origen: no hay versión clara que mantener.
+        UIUserInterfaceStyle: Dark
+        # iOS pide este permiso antes de la primera conexión a la red de la casa.
+        NSLocalNetworkUsageDescription: Mando habla con tu receptor y tus teles en la red de la casa.
+        # Google TV se anuncia por Bonjour; iOS exige declarar qué se busca.
+        NSBonjourServices: [_androidtvremote2._tcp, _companion-link._tcp]
+        UIAppFonts:
+          - Geist-Light.ttf
+          - Geist-Regular.ttf
+          - Geist-Medium.ttf
+          - GeistMono-Regular.ttf
+          - GeistMono-Medium.ttf
+          - InstrumentSerif-Italic.ttf
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: mx.alfonsoleal.mando
+        PRODUCT_NAME: Mando
+        TARGETED_DEVICE_FAMILY: "1,2"
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
+  PruebasMando:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [PruebasMando]
+    dependencies:
+      - target: Mando
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: mx.alfonsoleal.mando.pruebas
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_HOST: $(BUILT_PRODUCTS_DIR)/Mando.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mando
+        BUNDLE_LOADER: $(TEST_HOST)
+schemes:
+  Mando:
+    build:
+      targets:
+        Mando: all
+    test:
+      targets: [PruebasMando]

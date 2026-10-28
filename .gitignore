@@ -1,0 +1,33 @@
+# Lo que no vale la pena guardar: se regenera solo o es basura del sistema.
+node_modules/
+.DS_Store
+*.log
+.env
+.env.local
+dist/
+build/
+.next/
+.vite/
+test-results/
+
+# guardar: videos y renders (pesan gigas y se vuelven a sacar de la receta; los finales van a Eagle).
+*.mp4
+*.mov
+*.m4v
+*.mxf
+*.avi
+*.mkv
+*.webm
+*.braw
+*.r3d
+*.exr
+renders/
+Render Files/
+Transcoded Media/
+Proxy Media/
+Analysis Files/
+*.blend1
+*.sb-*
+
+# Lo genera xcodegen desde project.yml.
+Mando.xcodeproj/
